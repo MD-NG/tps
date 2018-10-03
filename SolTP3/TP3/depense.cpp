@@ -14,6 +14,9 @@ Depense::Depense(const string & nom, double montant, const string & lieu): nom_(
 	type_ = individuelle;
 }
 
+Depense::Depense(const Depense & depense): nom_(depense.getNom()), lieu_(depense.getLieu()), type_(depense.getType()), montant_(depense.getMontant()){
+}
+
 Depense::~Depense()
 {	
 	if (lieu_ != nullptr)
@@ -32,6 +35,11 @@ double Depense::getMontant() const {
 string* Depense::getLieu() const
 {
 	return lieu_;
+}
+
+TypeDepense Depense::getType() const
+{
+	return type_;
 }
 
 
@@ -58,5 +66,9 @@ void Depense::setType(TypeDepense type) {
 
 Depense& Depense::operator=(const Depense & depense)
 {
-	
+	type_ = depense.type_;
+	montant_ = depense.montant_;
+	nom_ = depense.nom_;
+	lieu_ = depense.lieu_;
+
 }

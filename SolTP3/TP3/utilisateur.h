@@ -22,7 +22,7 @@ using namespace std;
 class Utilisateur {
 public:
 	// Constructeurs
-	Utilisateur();
+
 	Utilisateur(const string& nom = "", TypeUtilisateur type = Regulier);
 	Utilisateur(const Utilisateur& utilisateur);
 
