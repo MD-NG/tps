@@ -55,7 +55,9 @@ void Groupe::setNom(const string& nom) {
 // Methodes d'ajout
 Groupe& Groupe::ajouterDepense(Depense* depense, Utilisateur* payePar, vector<Utilisateur*> payePour)
 {
-	
+	depenses_.push_back()
+
+
 }
 
 Groupe& Groupe::operator+=(Utilisateur* utilisateur)

@@ -1,14 +1,14 @@
 #include "depenseGroupe.h"
 
 
-DepenseGroupe::DepenseGroupe(const string & nom, double montant, const string & lieu): depense(nom, montant, lieu), nombreParticipants_(0), type_(groupe)
+DepenseGroupe::DepenseGroupe(const string & nom, double montant, const string & lieu): Depense(nom, montant, lieu), nombreParticipants_(0) 
 {
-	type_ = groupe;
+	setType(groupe);
 }
 
-DepenseGroupe::DepenseGroupe(const DepenseGroupe & depense)
+DepenseGroupe::DepenseGroupe(const DepenseGroupe & depense):Depense(depense), nombreParticipants_(0)
 {
-	DepenseGroupe(depense.getNom(), depense.getMontant(), depense.getLieu());
+	setType(groupe);
 }
 
 unsigned int DepenseGroupe::getNombreParticipants() const
@@ -19,10 +19,10 @@ unsigned int DepenseGroupe::getNombreParticipants() const
 double DepenseGroupe::getMontantPersonnel() const
 {
 	if (nombreParticipants_ == 0) {
-		return 0
+		return 0;
 	}
 	else {
-		return montant_ / nombreParticipants_;
+		return getMontant() / nombreParticipants_;
 	}	
 }
 

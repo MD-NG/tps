@@ -9,9 +9,9 @@
 // Constucteurs
 
 
-Depense::Depense(const string & nom, double montant, const string & lieu): nom_(nom), montant_(montant), lieu_(new string(lieu))
+Depense::Depense(const string & nom, double montant, const string & lieu): nom_(nom), montant_(montant), lieu_(new string(lieu), type_(individuelle))
 {
-	type_ = individuelle;
+
 }
 
 Depense::Depense(const Depense & depense): nom_(depense.getNom()), lieu_(depense.getLieu()), type_(depense.getType()), montant_(depense.getMontant()){
@@ -70,5 +70,6 @@ Depense& Depense::operator=(const Depense & depense)
 	montant_ = depense.montant_;
 	nom_ = depense.nom_;
 	lieu_ = depense.lieu_;
+	return(*this);
 
 }
