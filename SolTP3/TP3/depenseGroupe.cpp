@@ -1,14 +1,14 @@
 #include "depenseGroupe.h"
 
 
-DepenseGroupe::DepenseGroupe(const string & nom, double montant, const string & lieu) :nom_( nom), montant_ (montant), lieu_ (new string(lieu)), nombreParticipants_(0)
+DepenseGroupe::DepenseGroupe(const string & nom, double montant, const string & lieu): depense(nom, montant, lieu), nombreParticipants_(0), type_(groupe)
 {
 	type_ = groupe;
 }
 
 DepenseGroupe::DepenseGroupe(const DepenseGroupe & depense)
 {
-	DepenseGroupe(depense.getNom, depense.getMontant, depense.getLieu);
+	DepenseGroupe(depense.getNom(), depense.getMontant(), depense.getLieu());
 }
 
 unsigned int DepenseGroupe::getNombreParticipants() const

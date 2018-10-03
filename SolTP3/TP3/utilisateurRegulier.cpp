@@ -1,11 +1,11 @@
 #include "utilisateurRegulier.h"
 
-UtilisateurRegulier::UtilisateurRegulier(const string & nom):utilisateur(nom), estGroupe_(false)
+UtilisateurRegulier::UtilisateurRegulier(const string & nom):Utilisateur(nom), estGroupe_(false)
 {
 	
 }
 
-UtilisateurRegulier::UtilisateurRegulier(const Utilisateur & utilisateur) : utilisateur(utilisateur), estGroupe_(false)
+UtilisateurRegulier::UtilisateurRegulier(const Utilisateur & utilisateur) : Utilisateur(utilisateur), estGroupe_(false)
 {
 }
 

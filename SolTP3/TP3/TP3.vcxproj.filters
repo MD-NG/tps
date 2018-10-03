@@ -47,9 +47,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TP3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="groupe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

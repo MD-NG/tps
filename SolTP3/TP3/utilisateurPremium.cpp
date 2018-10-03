@@ -1,6 +1,6 @@
 #include "utilisateurPremium.h"
 
-UtilisateurPremium::UtilisateurPremium(const string & nom):Utilisateur(nom), joursRestants_(30), taux_(0.05)
+UtilisateurPremium::UtilisateurPremium(const string & nom):Utilisateur(nom, Premium), joursRestants_(30), taux_(0.05)
 {
 }
 

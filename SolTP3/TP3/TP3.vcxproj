@@ -173,7 +173,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TP3.cpp" />
     <ClCompile Include="transfert.cpp" />
     <ClCompile Include="utilisateur.cpp" />
     <ClCompile Include="utilisateurPremium.cpp" />
