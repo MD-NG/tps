@@ -5,6 +5,7 @@
 *******************************************/
 
 #include "groupe.h"
+#include <algorithm>
 
 // Constructeurs
 
@@ -55,14 +56,49 @@ void Groupe::setNom(const string& nom) {
 // Methodes d'ajout
 Groupe& Groupe::ajouterDepense(Depense* depense, Utilisateur* payePar, vector<Utilisateur*> payePour)
 {
-	depenses_.push_back()
+	if (depense->getType == groupe) {
+		bool utilisateurPresents = true;
+		for (auto &u: payePour) {
+			if ( find(payePour.begin(), payePour.end(), u) == payePour.end()  ) {
+				utilisateurPresents = false;
+				break;
+			}
+		}
+		if (utilisateurPresents) {
+			depenses_.push_back(static_cast<DepenseGroupe*> (depense));
+			auto pos = distance(utilisateurs_.begin(), find(utilisateurs_.begin(), utilisateurs_.end(), payePar));
+			double prixInd = depense->getMontant()/static_cast<DepenseGroupe*>(depense)->getNombreParticipants();
+			
+			comptes_[pos] -= prixInd;
 
-
+			for (auto &u : payePour) {
+				pos = distance(utilisateurs_.begin(), find(utilisateurs_.begin(), utilisateurs_.end(), u));
+				comptes_[pos] += prixInd;
+			}
+		}
+		cout << "Erreur: utilisateur non présent";
+	}
+	cout << "Erreur: la dépense n'est pas de type groupe";
 }
 
 Groupe& Groupe::operator+=(Utilisateur* utilisateur)
 {
-
+	if (find(utilisateurs_.begin(), utilisateurs_.end(), utilisateur) == utilisateurs_.end()) {
+		if (utilisateur->getType == Premium) {
+			if (static_cast<UtilisateurPremium> (*utilisateur).getJoursRestants() != 0) {
+				utilisateurs_.push_back(utilisateur);
+				comptes_.push_back(utilisateur->getTotalDepenses());
+			}
+			else {
+				cout<< "erreur";
+			}				
+		}
+		else
+		{
+			utilisateurs_.push_back(utilisateur);
+			comptes_.push_back(utilisateur->getTotalDepenses());
+		}
+	}
 }
 
 void Groupe::equilibrerComptes() {
@@ -115,7 +151,14 @@ void Groupe::equilibrerComptes() {
 }
 
 void Groupe::calculerTotalDepense() {
+	for (auto &u : utilisateurs_) {
+		u->calculerTotalDepenses;
+	}
 
+	totalDepenses_ = 0;
+	for (auto &d : depenses_) {
+		totalDepenses_ += d->getMontant();
+	}
 
 }
 

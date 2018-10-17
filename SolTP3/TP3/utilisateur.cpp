@@ -55,7 +55,16 @@ void Utilisateur::setNom(const string& nom) {
 void Utilisateur::calculerTotalDepenses() {
 	totalDepense_ = 0;
 	for (auto& dep : depenses_) {
-		totalDepense_ += dep->getMontant;
+		
+		if (dep->getType() == groupe) {
+			totalDepense_ += dep->getMontant()/ static_cast<DepenseGroupe*>(dep)->getNombreParticipants;
+		}
+		else {
+			totalDepense_ += dep->getMontant();
+		}
+			
+			
+		
 	}
 
 }
