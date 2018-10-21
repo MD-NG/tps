@@ -9,7 +9,7 @@
 // Constucteurs
 
 
-Depense::Depense(const string & nom, double montant, const string & lieu): nom_(nom), montant_(montant), lieu_(new string(lieu), type_(individuelle))
+Depense::Depense(const string & nom, double montant, const string & lieu): nom_(nom), montant_(montant), lieu_(new string(lieu)), type_(individuelle)
 {
 
 }
@@ -72,4 +72,11 @@ Depense& Depense::operator=(const Depense & depense)
 	lieu_ = depense.lieu_;
 	return(*this);
 
+}
+
+ostream & operator<<(ostream & os, const Depense & depense)
+{
+	
+	return os << "Achat fait(a " << *depense.getLieu() << ") : " << depense.getNom()
+		<< " Prix : " << depense.getMontant();
 }

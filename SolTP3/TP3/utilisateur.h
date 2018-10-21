@@ -39,7 +39,9 @@ public:
 
 	// Methodes de modification
 	void setNom(const string& nom);
-	void ajouterInteret(double montant);
+	void ajouterInteret(double montant) {
+		interet_ += montant;
+	}
 	void calculerTotalDepenses(); 
 
 	Utilisateur& operator+=(Depense* depense);
