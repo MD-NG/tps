@@ -20,3 +20,9 @@ void TransfertInterac::setcourriel(string courriel)
 {
 	courriel_ = courriel;
 }
+
+double TransfertInterac::getFraisTransfert() const
+{
+	const double FIXE = 1;
+	return typeid(*getExpediteur()) == typeid(UtilisateurPremium)? 0:FIXE;
+}

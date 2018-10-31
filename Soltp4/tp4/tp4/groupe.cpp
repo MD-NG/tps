@@ -5,6 +5,7 @@
 *******************************************/
 
 #include "groupe.h"
+#include <algorithm>
 
 // Constructeurs
 
@@ -53,6 +54,44 @@ void Groupe::setNom(const string& nom) {
 	nom_ = nom;
 }
 
+Groupe & Groupe::ajouterDepense(double montant, Utilisateur * payePar, const string & nom, const string & lieu)
+{
+	int index= find(utilisateurs_.begin(), utilisateurs_.end(), payePar)-utilisateurs_.begin();
+	bool bonUtilisateur = find(utilisateurs_.begin(), utilisateurs_.end(), payePar) != utilisateurs_.end();
+	if (bonUtilisateur) {
+		depenses_.push_back(new Depense(nom, montant, lieu));
+
+
+
+		double montantInd = montant / comptes_.size();
+		comptes_[index] += montant - montantInd;
+		for (int i = 0; i < comptes_.size(); i++) {
+			if (i != index) {
+				comptes_[i] -= montantInd;
+			}
+		}
+	}
+	return *this;
+}
+
+Groupe & Groupe::operator+=(Utilisateur * utilisateur)
+{
+	bool bonUtilisateur = true;
+	if (typeid(*utilisateur) == typeid(UtilisateurPremium)) {
+		bonUtilisateur =dynamic_cast<UtilisateurPremium*>(utilisateur)->getJoursRestants()>0;
+	}
+	else {
+		bonUtilisateur=dynamic_cast<UtilisateurRegulier*>(utilisateur)->getPossedeGroupe();
+	}
+	
+	if (bonUtilisateur) {
+		utilisateurs_.push_back(utilisateur);
+		comptes_.push_back(0);
+	}
+	return *this;
+	
+}
+
 void Groupe::equilibrerComptes() {
 
 	bool calcul = true;
@@ -78,11 +117,26 @@ void Groupe::equilibrerComptes() {
 		// On cherche lequel des deux a la dette la plus grande
 		if (-min <= max && min != 0 && max != 0) {
 			// Faire le transfert  du bon type
+			if (utilisateurs_[indexMin]->getMethodePaiement() == Interac) {
+				transferts_.push_back(new TransfertInterac(-comptes_[indexMin], utilisateurs_[indexMin], utilisateurs_[indexMax]));
+			}
+			else
+			{
+				transferts_.push_back(new TransfertPaypal(-comptes_[indexMin], utilisateurs_[indexMin], utilisateurs_[indexMax]));
+			}
+	
 			comptes_[indexMax] += min;
 			comptes_[indexMin] = 0;
 		}
 		else if (-min > max  && min != 0 && max != 0) {
 			// Faire le transfert du bon type
+			if (utilisateurs_[indexMin]->getMethodePaiement() == Interac) {
+				transferts_.push_back(new TransfertInterac(comptes_[indexMax], utilisateurs_[indexMin], utilisateurs_[indexMax]));
+			}
+			else
+			{
+				transferts_.push_back(new TransfertPaypal(comptes_[indexMax], utilisateurs_[indexMin], utilisateurs_[indexMax]));
+			}
 			comptes_[indexMax] = 0;
 			comptes_[indexMin] += max;
 		}
@@ -98,6 +152,10 @@ void Groupe::equilibrerComptes() {
 	}
 
 }
+
+
+
+
 
 // Methode d'affichage
 ostream & operator<<(ostream& os, const Groupe& groupe)

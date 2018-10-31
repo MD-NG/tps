@@ -23,7 +23,7 @@ public:
 	void setId(string id);
 
 	// TODO
-	double getFraisTransfert() const;
+	virtual double getFraisTransfert() const;
 
 private:
 	string id_;

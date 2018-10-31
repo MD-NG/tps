@@ -21,3 +21,10 @@ void TransfertPaypal::setId(string id)
 	id_ = id;
 }
 
+double TransfertPaypal::getFraisTransfert() const
+{
+	const double INTERET = 0.026;
+	const double FIXE = 0.3;
+	return getMontant()*INTERET + (typeid(*getExpediteur()) == typeid(UtilisateurPremium)) ? 0 : FIXE;
+}
+

@@ -90,7 +90,7 @@ Utilisateur& Utilisateur::operator+=(Depense* depense) {
 
 void Utilisateur::print(ostream & os) const
 {
-	os << "Total a payer: " << getBalance() << " (" << abs(balanceFrais_) << (balanceFrais_ < 0) ? " economises)" : " de frais\n";
+	os << "Total a payer: " << getBalance() << " (" << abs(balanceFrais_) << (balanceFrais_ <= 0) ? " economises)" : " de frais\n";
 }
 
 // Methode d'affichage

@@ -25,7 +25,7 @@ public:
 	Utilisateur* getReceveur() const;
 	double getMontant() const;
 	// TODO
-	double getFraisTransfert() const;
+	virtual double getFraisTransfert() const=0;
 
 	// Méthodes d'affichage
 	void setMontant(double montant);

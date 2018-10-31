@@ -19,9 +19,6 @@ double Transfert::getMontant() const {
 	return montant_;
 }
 
-double Transfert::getFraisTransfert() const
-{
-}
 
 Utilisateur* Transfert::getExpediteur() const {
 	return expediteur_;
@@ -44,6 +41,14 @@ void Transfert::setReceveur(Utilisateur *receveur) {
 	receveur_ = receveur;
 }
 
+void Transfert::effectuerTransfert()
+{
+	expediteur_->modifierBalanceTranferts(-montant_);
+	receveur_->modifierBalanceTranferts(montant_);
+	expediteur_->modifierBalanceFrais(getFraisTransfert());
+}
+
 //Methode affichage
 ostream& operator<<(ostream& os, const Transfert& transfert) {
+	return os;
 }

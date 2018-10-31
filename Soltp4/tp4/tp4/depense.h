@@ -33,7 +33,7 @@ public:
 private:
 	string nom_;
 	double montant_;
-	const string* lieu_;
+	string* lieu_;
 
 };
 #endif
