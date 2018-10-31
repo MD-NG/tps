@@ -16,5 +16,16 @@ bool UtilisateurRegulier::getPossedeGroupe() const {
 }
 
 void UtilisateurRegulier::setPossedeGroupe(bool possedeGroupe) {
-	possedeGroupe_ = possedeGroupe;
+	possedeGroupe_ = possedeGroupe;	
+}
+
+void UtilisateurRegulier::print(ostream & os) const
+{
+	os << "\tUtilisateur (regulier dan un groupe) " << getNom() << ":\n";
+	Utilisateur::print(os);
+	for (auto &d : getDepenses())
+	{
+		os << d;
+	}
+
 }

@@ -88,6 +88,11 @@ Utilisateur& Utilisateur::operator+=(Depense* depense) {
 	return *this;
 }
 
+void Utilisateur::print(ostream & os) const
+{
+	os << "Total a payer: " << getBalance() << " (" << abs(balanceFrais_) << (balanceFrais_ < 0) ? " economises)" : " de frais\n";
+}
+
 // Methode d'affichage
 ostream& operator<<(ostream& os, const Utilisateur& utilisateur)
 {

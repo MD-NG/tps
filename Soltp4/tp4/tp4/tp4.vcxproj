@@ -115,6 +115,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="depense.cpp" />
+    <ClCompile Include="groupe.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="transfert.cpp" />
+    <ClCompile Include="TransfertInterac.cpp" />
+    <ClCompile Include="TransfertPaypal.cpp" />
+    <ClCompile Include="utilisateur.cpp" />
+    <ClCompile Include="utilisateurPremium.cpp" />
+    <ClCompile Include="utilisateurRegulier.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="depense.h" />
+    <ClInclude Include="groupe.h" />
+    <ClInclude Include="transfert.h" />
+    <ClInclude Include="transfertInterac.h" />
+    <ClInclude Include="transfertPaypal.h" />
+    <ClInclude Include="utilisateur.h" />
+    <ClInclude Include="utilisateurPremium.h" />
+    <ClInclude Include="utilisateurRegulier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
