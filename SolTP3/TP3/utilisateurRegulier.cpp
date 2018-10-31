@@ -23,5 +23,12 @@ UtilisateurRegulier & UtilisateurRegulier::operator=(Utilisateur * utilisateur)
 {
 	Utilisateur::operator=(utilisateur);
 	estGroupe_ = false;
+	return *this;
 
+}
+
+ostream & operator<<(ostream & os, const UtilisateurRegulier & utilisateur)
+{
+	// TODO: insert return statement here
+	return os;
 }

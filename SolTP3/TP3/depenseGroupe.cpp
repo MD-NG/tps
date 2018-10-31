@@ -6,7 +6,7 @@ DepenseGroupe::DepenseGroupe(const string & nom, double montant, const string & 
 	setType(groupe);
 }
 
-DepenseGroupe::DepenseGroupe(const DepenseGroupe & depense):Depense(depense), nombreParticipants_(0)
+DepenseGroupe::DepenseGroupe(const DepenseGroupe & depense):Depense(depense)
 {
 	setType(groupe);
 }
@@ -29,4 +29,12 @@ double DepenseGroupe::getMontantPersonnel() const
 void DepenseGroupe::setNombreParticipants(unsigned int nombre)
 {
 	nombreParticipants_ = nombre;
+}
+
+ostream & operator<<(ostream & os, const DepenseGroupe & depense)
+{
+	// TODO: insert return statement here
+	return os << "Depense de groupe: \tAchat fait (a " << *depense.getLieu() << "): " << depense.getNom() 
+		<< " Prix : " << depense.getMontant() << " fait par : " << depense.getNombreParticipants()
+		<< " soit : "<< depense.getMontant()/ depense.getNombreParticipants() << " par personne.";
 }
