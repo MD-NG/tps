@@ -19,6 +19,10 @@ double Transfert::getMontant() const {
 	return montant_;
 }
 
+double Transfert::getFraisTransfert() const
+{
+}
+
 Utilisateur* Transfert::getExpediteur() const {
 	return expediteur_;
 }
