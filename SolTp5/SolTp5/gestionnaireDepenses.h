@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <vector>
 
-class GestionnaireDepenses:GestionnaireGenerique<vector<Depense*>, Depense*,AjouterDepense, Depense* >{
+class GestionnaireDepenses:public GestionnaireGenerique<vector<Depense*>, Depense*,AjouterDepense, Depense* >{
 public:
 
 	double getTotalDepenses() const;

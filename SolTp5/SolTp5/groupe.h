@@ -19,6 +19,7 @@
 #include "gestionnaireDepenses.h"
 #include "gestionnaireUtilisateurs.h"
 
+
 using namespace std;
 
 class Groupe {
@@ -62,7 +63,6 @@ private:
 	vector<Transfert*> transferts_;
 
 	// TODO : À modifier :
-	vector<double> comptes_;
 
 	// Retiré :
 	// vector<Utilisateur*> utilisateurs_;

@@ -22,7 +22,7 @@
 template<typename C, typename T, typename FoncteurAjouter, typename D>
 class GestionnaireGenerique {
 public:
-	C getConteneur() { return conteneur_; }const;
+	C getConteneur() const;
 	void ajouter(T t) {	conteneur_=FoncteurAjouter(conteneur_)(T);}
 	int getNombreElements() const;
 	D getElementParIndex(int i) const;
@@ -32,6 +32,12 @@ protected:
 		
 };
 #endif
+
+template<typename C, typename T, typename FoncteurAjouter, typename D>
+inline C GestionnaireGenerique<C, T, FoncteurAjouter, D>::getConteneur() const
+{
+	return conteneur_;
+}
 
 template<typename C, typename T, typename FoncteurAjouter, typename D>
 inline int GestionnaireGenerique<C, T, FoncteurAjouter, D>::getNombreElements() const

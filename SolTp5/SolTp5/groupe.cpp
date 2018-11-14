@@ -39,13 +39,17 @@ string Groupe::getNom() const {
 // TODO : À modifier :
 vector<Depense*> Groupe::getDepenses() const
 {
-	return gestionnaireDepenses_->getDepenses();
+	return gestionnaireDepenses_->getConteneur();
 }
 
 // TODO : À modifier :
 vector<Utilisateur*> Groupe::getUtilisateurs() const
 {
-	return gestionnaireUtilisateurs_->getUtilisateurs();
+	vector<Utilisateur*> retVal;
+	for (auto &p : gestionnaireUtilisateurs_->getConteneur()) {
+		retVal.push_back(p.first);
+	}
+	return retVal;
 }
 
 vector<Transfert*> Groupe::getTransferts() const
@@ -55,7 +59,7 @@ vector<Transfert*> Groupe::getTransferts() const
 
 // TODO : À modifier :
 vector<double> Groupe::getComptes() const {
-	return comptes_;
+	return gestionnaireUtilisateurs_->getComptes();
 }
 
 double Groupe::getTotalDepenses() const {
@@ -94,7 +98,7 @@ Groupe& Groupe::ajouterDepense(double montant, Utilisateur* payePar, const strin
 	// depenses_.push_back(depense);
 
 	// Ajouté :
-	gestionnaireDepenses_->ajouterDepense(depense);
+	gestionnaireDepenses_->ajouter(depense);
 
 	*payePar += depense;
 

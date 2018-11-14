@@ -11,11 +11,18 @@
 #include <map>
 #include <vector>
 #include "gestionnaireGenerique.h"
+#include <algorithm>
+#include <functional>
 
-
-class GestionnaireUtilisateurs :GestionnaireGenerique <map<Utilisateur, double>, Utilisateur*, jouterUtilisateur,pair<Utilisateur*, double>> {
+class GestionnaireUtilisateurs :public GestionnaireGenerique <map<Utilisateur*, double>, Utilisateur*, AjouterUtlisateur,pair<Utilisateur*, double>> {
 public:
-	get
+	vector<double> getComptes() const;
+	void mettreAjourComptes(Utilisateur* payePar, double montant);
+	pair<Utilisateur*, double>& getmax() const;
+	pair<Utilisateur*, double>& getmin() const;
+	Utilisateur* getUtilisateurSuivant(Utilisateur* utilisateur, double montant) const;
+	vector<pair<Utilisateur*, double>> getUtilisateursEntre(double bornesInf, double bornesSup) const;
+	GestionnaireUtilisateurs& setCompte(pair<Utilisateur*, double> p);
 
 private:
 
