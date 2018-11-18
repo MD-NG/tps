@@ -1,6 +1,4 @@
 #include "gestionnaireDepenses.h"
-
-#include <algorithm>
 #include <functional>
 
 

@@ -11,6 +11,7 @@ class GestionnaireDepenses:public GestionnaireGenerique<vector<Depense*>, Depens
 public:
 
 	double getTotalDepenses() const;
+
 	
 private:
 };

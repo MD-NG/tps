@@ -19,11 +19,12 @@
 #ifndef GESTIONNAIRE_GENERIQUE_H
 #define GESTIONNAIRE_GENERIQUE_H
 
+
 template<typename C, typename T, typename FoncteurAjouter, typename D>
 class GestionnaireGenerique {
 public:
 	C getConteneur() const;
-	void ajouter(T t) {	conteneur_=FoncteurAjouter(conteneur_)(T);}
+	void ajouter(T t);
 	int getNombreElements() const;
 	D getElementParIndex(int i) const;
 
@@ -31,7 +32,7 @@ protected:
 	C conteneur_;
 		
 };
-#endif
+
 
 template<typename C, typename T, typename FoncteurAjouter, typename D>
 inline C GestionnaireGenerique<C, T, FoncteurAjouter, D>::getConteneur() const
@@ -40,13 +41,26 @@ inline C GestionnaireGenerique<C, T, FoncteurAjouter, D>::getConteneur() const
 }
 
 template<typename C, typename T, typename FoncteurAjouter, typename D>
+inline void GestionnaireGenerique<C, T, FoncteurAjouter, D>::ajouter(T t)
+{
+	conteneur_=FoncteurAjouter(conteneur_)(t);
+	
+
+}
+
+template<typename C, typename T, typename FoncteurAjouter, typename D>
 inline int GestionnaireGenerique<C, T, FoncteurAjouter, D>::getNombreElements() const
 {
-	return conteneur_.size(); ;
+	return conteneur_.size();
 }
 
 template<typename C, typename T, typename FoncteurAjouter, typename D>
 inline D GestionnaireGenerique<C, T, FoncteurAjouter, D>::getElementParIndex(int i) const
 {
-	return { return conteneur_[i] };
+	auto it=conteneur_.begin();
+	std::advance(it, i);
+	return *it;
+	
+
 }
+#endif

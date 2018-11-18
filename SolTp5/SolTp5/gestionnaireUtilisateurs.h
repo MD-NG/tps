@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <functional>
 
-class GestionnaireUtilisateurs :public GestionnaireGenerique <map<Utilisateur*, double>, Utilisateur*, AjouterUtlisateur,pair<Utilisateur*, double>> {
+class GestionnaireUtilisateurs :public GestionnaireGenerique <map<Utilisateur*, double>, Utilisateur* , AjouterUtlisateur,pair<Utilisateur*, double>> {
 public:
 	vector<double> getComptes() const;
 	void mettreAjourComptes(Utilisateur* payePar, double montant);
@@ -23,7 +23,8 @@ public:
 	Utilisateur* getUtilisateurSuivant(Utilisateur* utilisateur, double montant) const;
 	vector<pair<Utilisateur*, double>> getUtilisateursEntre(double bornesInf, double bornesSup) const;
 	GestionnaireUtilisateurs& setCompte(pair<Utilisateur*, double> p);
-
+	bool estExistant(Utilisateur* utilisateur) const;
+ 
 private:
 
 };
