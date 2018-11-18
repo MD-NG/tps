@@ -11,6 +11,11 @@
 Depense::Depense(const string& nom, double montant, const string& lieu) :nom_(nom), montant_(montant), lieu_(new string(lieu)) {
 }
 
+Depense::Depense(const Depense & dep):nom_(dep.nom_), montant_(dep.montant_), lieu_(new string(*dep.lieu_))
+{
+
+}
+
 
 // Methodes d'acces
 string Depense::getNom() const {
@@ -43,5 +48,5 @@ void Depense::setLieu(const string& nom)
 // Methode d'affichage
 ostream & operator<<(ostream& os, const Depense& depense)
 {
-	return os << "- Depense (a " << *depense.lieu_ << ") : "  << depense.nom_ << ". Prix : " << depense.montant_ << "$" << endl;
+	return os << "\t\t\t- Depense (a " << *depense.lieu_ << ") : "  << depense.nom_ << ". Prix : " << depense.montant_ << "$" << endl;
 }

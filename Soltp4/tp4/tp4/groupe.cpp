@@ -60,14 +60,15 @@ Groupe & Groupe::ajouterDepense(double montant, Utilisateur * payePar, const str
 	bool bonUtilisateur = find(utilisateurs_.begin(), utilisateurs_.end(), payePar) != utilisateurs_.end();
 	if (bonUtilisateur) {
 		depenses_.push_back(new Depense(nom, montant, lieu));
-
-
-
+		*payePar += depenses_.back();
+		
 		double montantInd = montant / comptes_.size();
 		comptes_[index] += montant - montantInd;
+
 		for (int i = 0; i < comptes_.size(); i++) {
 			if (i != index) {
 				comptes_[i] -= montantInd;
+				
 			}
 		}
 	}
@@ -81,7 +82,8 @@ Groupe & Groupe::operator+=(Utilisateur * utilisateur)
 		bonUtilisateur =dynamic_cast<UtilisateurPremium*>(utilisateur)->getJoursRestants()>0;
 	}
 	else {
-		bonUtilisateur=dynamic_cast<UtilisateurRegulier*>(utilisateur)->getPossedeGroupe();
+		bonUtilisateur=!dynamic_cast<UtilisateurRegulier*>(utilisateur)->getPossedeGroupe();
+		dynamic_cast<UtilisateurRegulier*>(utilisateur)->setPossedeGroupe(true);
 	}
 	
 	if (bonUtilisateur) {
@@ -140,7 +142,8 @@ void Groupe::equilibrerComptes() {
 			comptes_[indexMax] = 0;
 			comptes_[indexMin] += max;
 		}
-
+		transferts_.back()->effectuerTransfert();
+	
 		// On incremente le nombre de comptes mis a 0
 		count++;
 		if (-min == max) {

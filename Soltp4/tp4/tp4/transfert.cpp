@@ -20,6 +20,7 @@ double Transfert::getMontant() const {
 }
 
 
+
 Utilisateur* Transfert::getExpediteur() const {
 	return expediteur_;
 }
@@ -43,12 +44,20 @@ void Transfert::setReceveur(Utilisateur *receveur) {
 
 void Transfert::effectuerTransfert()
 {
-	expediteur_->modifierBalanceTranferts(-montant_);
-	receveur_->modifierBalanceTranferts(montant_);
-	expediteur_->modifierBalanceFrais(getFraisTransfert());
+	const double INTERET = 0.03;
+	expediteur_->modifierBalanceTranferts(montant_);
+	receveur_->modifierBalanceTranferts(-montant_);
+	double temps = getFraisTransfert();
+	if (typeid(*expediteur_) == typeid(UtilisateurPremium)) {
+		expediteur_->modifierBalanceFrais(-getMontant()*INTERET);
+	}
+	else {
+		expediteur_->modifierBalanceFrais(getFraisTransfert());
+	}
+	
 }
 
 //Methode affichage
 ostream& operator<<(ostream& os, const Transfert& transfert) {
-	return os;
+	return os << "\t-" << transfert.getExpediteur()->getNom() << "\t->\t"<< transfert.getReceveur()->getNom()<<"\t: "<< transfert.getMontant()<< "$\n";
 }

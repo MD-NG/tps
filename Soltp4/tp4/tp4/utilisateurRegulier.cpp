@@ -21,11 +21,13 @@ void UtilisateurRegulier::setPossedeGroupe(bool possedeGroupe) {
 
 void UtilisateurRegulier::print(ostream & os) const
 {
-	os << "\tUtilisateur (regulier dan un groupe) " << getNom() << ":\n";
+	os << "Utilisateur (regulier dan un groupe) " << getNom() << ":\n";
 	Utilisateur::print(os);
-	for (auto &d : getDepenses())
+	vector <Depense*> depenses = getDepenses();
+	os << "\n\t\tDepenses:\n";
+	for (auto &d : depenses)
 	{
-		os << d;
+		os << *d;
 	}
-
+	os << endl;
 }

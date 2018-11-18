@@ -242,6 +242,20 @@ int main() {
 	cout << *groupe1;
 
 	// TODO: Liberation de la memoire si nécessaire
+	
+	
+	delete ur1;
+	delete ur2;
+	delete ur3;
+	delete ur4;
+	delete up1;
+	delete up2;
+	delete up3;
+	delete up4;
+	delete d1;
+	delete d2;
+	delete groupe1;
+	delete groupe2;
 
 	return 0;
 }

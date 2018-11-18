@@ -22,13 +22,13 @@ void UtilisateurPremium::setJoursRestants(unsigned int joursRestants) {
 
 void UtilisateurPremium::print(ostream & os) const
 {
-	os << "\tUtilisateur (Premium) " << getNom()<<":\n";
+	os << "Utilisateur (Premium) " << getNom()<<":\n";
 	Utilisateur::print(os);
-	os << "Jours restants: " << joursRestants_;
-	os << "\nDepenses:\n";
+	os << "\n\t\tJours restants: " << joursRestants_;
+	os << "\n\t\tDepenses:\n";
 	for  (auto &d: getDepenses())
 	{
-		os << d;
+		os << *d;
 	}
 	os << endl;
 	

@@ -17,6 +17,7 @@ public:
 	// Constructeurs
 	// TODO
 	Depense(const string& nom = "", double montant = 0 , const string& lieu = "Montreal");
+	Depense(const Depense& dep);
 
 	// Methodes d'acces
 	string getNom() const;

@@ -7,7 +7,7 @@
 #include "transfertInterac.h"
 
 TransfertInterac::TransfertInterac(double montant, Utilisateur* expediteur, Utilisateur* receveur)
-	: Transfert(montant, expediteur, receveur)
+	: Transfert(montant, expediteur, receveur), courriel_(receveur->getCourriel())
 {
 }
 
