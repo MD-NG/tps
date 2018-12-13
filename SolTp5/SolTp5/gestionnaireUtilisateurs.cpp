@@ -29,14 +29,14 @@ void GestionnaireUtilisateurs::mettreAjourComptes(Utilisateur * payePar, double 
 
 pair<Utilisateur*, double>& GestionnaireUtilisateurs::getmax() const
 {
-	pair<Utilisateur*, double> retVal=*max_element(conteneur_.begin(), conteneur_.end(), [](const pair<Utilisateur*, double> &p1, const pair<Utilisateur*, double> &p2) {return p1.second < p2.second; });
-	return retVal;
+	pair<Utilisateur*, double>* retVal=new pair<Utilisateur*, double>(*max_element(conteneur_.begin(), conteneur_.end(), [](const pair<Utilisateur*, double> &p1, const pair<Utilisateur*, double> &p2) {return p1.second < p2.second; }));
+	return *retVal;
 }
 
 pair<Utilisateur*, double>& GestionnaireUtilisateurs::getmin() const
 {
-	pair<Utilisateur*, double> retVal2 = *min_element(conteneur_.begin(), conteneur_.end(), [](const pair<Utilisateur*, double> &p1, const pair<Utilisateur*, double> &p2) {return p1.second < p2.second; });
-	return retVal2;
+	pair<Utilisateur*, double>* retVal = new pair<Utilisateur*, double>(*min_element(conteneur_.begin(), conteneur_.end(), [](const pair<Utilisateur*, double> &p1, const pair<Utilisateur*, double> &p2) {return p1.second < p2.second; }));
+	return *retVal;
 
 }
 
